@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <random>
+#include <Python.h>
+
+
 using namespace std;
 
 // Declaring player in a forward declaration.
@@ -13,6 +17,7 @@ int MAX_TRAINING_PER_DAY = 2;
 int MAX_FOOD_STORED = 0;
 int DRACHMA_BANK = 0;
 int currentDayPartition = 0;
+int minLow = 0; int minHigh = 250;
 vector<Player> PerishedAgents;
 
 class Player {
@@ -21,7 +26,7 @@ public:
     bool isGodliving = false;
     int dayCount = 0;
     int maxHealth = 100;
-    int maxStamina = 50;
+    int maxStamina = 100;
     int maxHunger = 75;
     float hunger = static_cast<float>(maxHunger);
     float health = static_cast<float>(maxHealth);
@@ -29,6 +34,9 @@ public:
     bool isAlive = true;
     int drachma = 0;
     int currentFoodCount = 0;
+    int numberOfBarksMade = 0;
+
+    // Set a min clamp for specific values so a negative won't happen
 
     void AdvanceDayPartition() {
         currentDayPartition = (currentDayPartition + 1) % 4;
@@ -38,7 +46,7 @@ public:
         }
     }
 
-    void CheckIfAlive() {
+    void CheckIfAlive()  {
         if (health <= 0 || hunger <= 0) {
             PerishedAgents.push_back(*this);
             isAlive = false;
