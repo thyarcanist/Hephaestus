@@ -53,6 +53,7 @@ public:
         stamina -= 15;
         maxStamina += 5;
         drachma += 5;
+        health -= 3;
         cout << "You decide to spend your time training.\n";
         AdvanceDayPartition();
         CheckIfAlive();
@@ -149,8 +150,49 @@ void Experience(Player& player) {
     bool isExperiencing = true;
 
     while(isExperiencing && player.isAlive) {
-        // Example action call
-        player.TrainOnce();
+
+        // Display current status
+        cout << "\nDays Alive: " << player.dayCount << endl;
+        cout << "Health: " << player.health << endl;
+        cout << "Stamina: " << player.stamina << endl;
+        cout << "Drachma: " << player.drachma << endl;
+        cout << "Hunger: " << player.hunger << endl;
+
+        // Display options
+        cout << "\nChoose an action:" << endl;
+        cout << "1. Train Once" << endl;
+        cout << "2. Go to Market" << endl;
+        cout << "3. Go to Sleep" << endl;
+        cout << "4. Eat from Inventory" << endl;
+        cout << "5. Do an Odd Job" << endl;
+        cout << "6. Exit" << endl;
+
+        int choice;
+        cin >> choice;
+
+        switch(choice) {
+            case 1:
+                player.TrainOnce();
+                break;
+            case 2:
+                player.GoToMarket();
+                break;
+            case 3:
+                player.GoToSleep();
+                break;
+            case 4:
+                player.EatFromInventory();
+                break;
+            case 5:
+                player.DoAnOddJob();
+                break;
+            case 6:
+                isExperiencing = false;
+                break;
+            default:
+                cout << "Invalid choice. Please choose again." << endl;
+        }
+
 
         if (!player.isAlive) {
             char choice;
