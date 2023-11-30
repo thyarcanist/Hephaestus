@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <random>
-#include <Python.h>
+#include <unistd.h>
 
 
 using namespace std;
@@ -54,6 +54,12 @@ public:
         }
     }
 
+    void CheckStamina(){
+        if (stamina <= 0){
+            StaminaExhaustion();
+        }
+    }
+
     // Reorganizing to add the day advances:
     // Train, Eat, Sleep, Wait, Do an odd job.
 
@@ -62,6 +68,7 @@ public:
         maxStamina += 5;
         drachma += 5;
         health -= 3;
+        hunger -= 20;
         cout << "You decide to spend your time training.\n";
         AdvanceDayPartition();
         CheckIfAlive();
@@ -69,6 +76,7 @@ public:
     void GoToMarket() {
         currentFoodCount++;
         drachma -= 3;
+        hunger -= 10;
         DRACHMA_BANK += 3;
         MAX_FOOD_STORED -= 1;
         cout << "You went to the local market to purchase something to eat.\n";
@@ -77,8 +85,16 @@ public:
     }
     void GoToSleep() {
         stamina += 20;
-        hunger -= 15;
+        hunger -= 35;
         cout << "You decide to spend some time resting.\n";
+        LoadingBarDisplay();
+        AdvanceDayPartition();
+        CheckIfAlive();
+    }
+    void StaminaExhaustion(){
+        stamina += 15;
+        hunger -= 40;
+        cout << "You have passed out due to lack of stamina.\n";
         AdvanceDayPartition();
         CheckIfAlive();
     }
@@ -86,6 +102,7 @@ public:
         if (currentFoodCount >= 1) {
             currentFoodCount--;
             cout << "You spend some time eating some food.\n";
+            hunger += 50;
             AdvanceDayPartition();
             CheckIfAlive();
         } else {
@@ -95,11 +112,33 @@ public:
     }
     void DoAnOddJob() {
         stamina -= 35;
+        hunger -= 40;
         health -= 15;
         drachma += 27;
         cout << "You take an odd job, to earn some more drachma. It's money well earned.\n";
         AdvanceDayPartition();
         CheckIfAlive();
+    }
+    void LoadingBarDisplay(){
+        float progress = 0.0;
+        while (progress < 1.0) {
+            int barWidth = 100; // How long the bar is
+
+            cout << "[";
+            int pos = barWidth * progress;
+            for (int i = 0; i < barWidth; i++){
+                if (i < pos) cout << "█";
+                else if (i == pos) cout << "|";
+                else cout << " ";
+            }
+            cout << "] " << int(progress * 100.0) << " %\r";
+            cout.flush();
+
+            // demonstration purposes
+            progress += 0.10;
+        }
+        sleep(5);
+        cout << endl;
     }
 };
 
@@ -165,6 +204,7 @@ void Experience(Player& player) {
         cout << "Stamina: " << player.stamina << endl;
         cout << "Drachma: " << player.drachma << endl;
         cout << "Hunger: " << player.hunger << endl;
+        cout << "Meals: " << player.currentFoodCount << endl;
 
         // Display options
         cout << "\nChoose an action:" << endl;

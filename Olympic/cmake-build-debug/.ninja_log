@@ -1,5 +1,9 @@
 # ninja log v5
-1	701	7229420606051095	CMakeFiles/Olympic.dir/main.cpp.obj	1dd5121611df3ccc
-703	844	7229420607373238	Olympic.exe	d19be4e49e3bf919
-4	839	7229429686534927	CMakeFiles/Olympic.dir/main.cpp.obj	1dd5121611df3ccc
-840	1012	7229429688120007	Olympic.exe	d19be4e49e3bf919
+7	1477	7230523663222232	CMakeFiles/Olympic.dir/main.cpp.obj	1dd5121611df3ccc
+1477	1995	7230523666501165	Olympic.exe	d19be4e49e3bf919
+3	873	7230538122433298	CMakeFiles/Olympic.dir/main.cpp.obj	1dd5121611df3ccc
+874	1042	7230538123968766	Olympic.exe	d19be4e49e3bf919
+3	779	7230539181796425	CMakeFiles/Olympic.dir/main.cpp.obj	1dd5121611df3ccc
+780	900	7230539182911881	Olympic.exe	d19be4e49e3bf919
+3	722	7230540684278014	CMakeFiles/Olympic.dir/main.cpp.obj	1dd5121611df3ccc
+722	849	7230540685439104	Olympic.exe	d19be4e49e3bf919
