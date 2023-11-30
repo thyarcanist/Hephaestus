@@ -2,7 +2,9 @@
 #include <string>
 #include <vector>
 #include <random>
-#include <unistd.h>
+#include <iostream>
+#include <thread>
+#include <chrono>
 
 
 using namespace std;
@@ -34,7 +36,6 @@ public:
     bool isAlive = true;
     int drachma = 0;
     int currentFoodCount = 0;
-    int numberOfBarksMade = 0;
 
     // Set a min clamp for specific values so a negative won't happen
 
@@ -72,6 +73,7 @@ public:
         cout << "You decide to spend your time training.\n";
         AdvanceDayPartition();
         CheckIfAlive();
+        CheckStamina();
     }
     void GoToMarket() {
         currentFoodCount++;
@@ -82,6 +84,7 @@ public:
         cout << "You went to the local market to purchase something to eat.\n";
         AdvanceDayPartition();
         CheckIfAlive();
+        CheckStamina();
     }
     void GoToSleep() {
         stamina += 20;
@@ -90,6 +93,7 @@ public:
         LoadingBarDisplay();
         AdvanceDayPartition();
         CheckIfAlive();
+        CheckStamina();
     }
     void StaminaExhaustion(){
         stamina += 15;
@@ -97,6 +101,7 @@ public:
         cout << "You have passed out due to lack of stamina.\n";
         AdvanceDayPartition();
         CheckIfAlive();
+        CheckStamina();
     }
     void EatFromInventory() {
         if (currentFoodCount >= 1) {
@@ -105,6 +110,7 @@ public:
             hunger += 50;
             AdvanceDayPartition();
             CheckIfAlive();
+            CheckStamina();
         } else {
             cout << "You don't have any food.\n";
         }
@@ -118,26 +124,29 @@ public:
         cout << "You take an odd job, to earn some more drachma. It's money well earned.\n";
         AdvanceDayPartition();
         CheckIfAlive();
+        CheckStamina();
     }
-    void LoadingBarDisplay(){
+    void LoadingBarDisplay() {
         float progress = 0.0;
-        while (progress < 1.0) {
+        int MILLISECONDS = 500;
+        while (progress <= 1.0) {
             int barWidth = 100; // How long the bar is
 
             cout << "[";
             int pos = barWidth * progress;
-            for (int i = 0; i < barWidth; i++){
-                if (i < pos) cout << "█";
+            for (int i = 0; i < barWidth; i++) {
+                if (i < pos) cout << "#";
                 else if (i == pos) cout << "|";
                 else cout << " ";
             }
             cout << "] " << int(progress * 100.0) << " %\r";
             cout.flush();
 
-            // demonstration purposes
+            // Increment progress
             progress += 0.10;
+            // Sleep for a short duration to simulate loading time
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
-        sleep(5);
         cout << endl;
     }
 };
