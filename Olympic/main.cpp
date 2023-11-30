@@ -5,6 +5,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <fstream>
 
 
 using namespace std;
@@ -46,7 +47,6 @@ public:
             MAX_FOOD_ALLOCATION_PER_DAY = MAX_FOOD_STORED;
         }
     }
-
     void CheckIfAlive()  {
         if (health <= 0 || hunger <= 0) {
             PerishedAgents.push_back(*this);
@@ -54,12 +54,12 @@ public:
             cout << "Your character has perished.\n";
         }
     }
-
     void CheckStamina(){
         if (stamina <= 0){
             StaminaExhaustion();
         }
     }
+
 
     // Reorganizing to add the day advances:
     // Train, Eat, Sleep, Wait, Do an odd job.
@@ -151,10 +151,12 @@ public:
     }
 };
 
+
 bool OlympianGreeting(char chosen);
 void LeavingGreeting();
 void Experience(Player& player);
 string DayPartition(int currentDayState);
+void triggerRandomEvent();
 
 // Each day will add max food allocation per day.
 // Food costs a specific amount of DRACHMA
@@ -204,6 +206,7 @@ bool OlympianGreeting(char chosen) {
 
 void Experience(Player& player) {
     bool isExperiencing = true;
+    int totalDaysPassed;
 
     while(isExperiencing && player.isAlive) {
 
@@ -217,11 +220,11 @@ void Experience(Player& player) {
 
         // Display options
         cout << "\nChoose an action:" << endl;
-        cout << "1. Train Once" << endl;
-        cout << "2. Go to Market" << endl;
-        cout << "3. Go to Sleep" << endl;
-        cout << "4. Eat from Inventory" << endl;
-        cout << "5. Do an Odd Job" << endl;
+        cout << "1. Train Once" << endl; // Trains increases max stamina.
+        cout << "2. Go to Market" << endl; // Purchases a meal.
+        cout << "3. Go to Sleep" << endl; // Goes to sleep.
+        cout << "4. Eat from Inventory" << endl; // Eats meal.
+        cout << "5. Do an Odd Job" << endl; // Earns drachma.
         cout << "6. Exit" << endl;
 
         int choice;
@@ -248,6 +251,11 @@ void Experience(Player& player) {
                 break;
             default:
                 cout << "Invalid choice. Please choose again." << endl;
+        }
+
+        // Random Event
+        if (player.dayCount % 5 == 0){
+            triggerRandomEvent();
         }
 
 
@@ -281,5 +289,18 @@ string DayPartition(int currentDayState) {
             return "Twilight";
         default:
             return "Unknown";
+    }
+}
+void triggerRandomEvent() {
+    system("python random_event.py > event_output.txt");
+
+    // find the file called this and if its open get the random line, print then close the file.
+    std::ifstream file("event_output.txt");
+    string line;
+    if (file.is_open()){
+        while(getline(file, line)) {
+            cout << "Random Event: " << line << endl;
+        }
+        file.close();
     }
 }
