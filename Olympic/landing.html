@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOID OS - Terminus Gateway Access</title>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    border: 2px solid white;
+    padding: 20px;
+  }
+  .header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+  }
+  .login-area {
+    padding: 20px 0;
+  }
+  .input-group {
+    margin-bottom: 10px;
+  }
+  .input-group label,
+  .input-group input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+  }
+  .input-group input {
+    background: black;
+    border: 1px solid white;
+    color: white;
+  }
+  .send-btn {
+    background: purple;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .send-btn:hover {
+    background: darkmagenta;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>TERMINUS GATEWAY ACCESS</h1>
+    </div>
+    <div class="login-area">
+      <div class="input-group">
+        <label for="login">Login</label>
+        <input type="text" id="login" name="login">
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <button class="send-btn">SEND</button>
+    </div>
+  </div>
+</body>
+</html>

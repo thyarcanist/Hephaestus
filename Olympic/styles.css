@@ -1,0 +1,151 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Titillium Web', Courier, monospace;
+    background-color: black;
+    color: green;
+}
+
+#login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#terminal-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
+}
+
+input, button {
+    margin: 5px;
+    padding: 10px;
+    background: none;
+    border: 1px solid green;
+    color: green;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Fixed terminal height */
+#terminal {
+    width: 600px; /* Default width, it will be overridden by specific styles */
+    height: 150px; /* Fixed height for the terminal */
+    background-color: black;
+    border: none;
+    color: green;
+    font-family: 'Titillium Web', Courier, monospace;
+    resize: none;
+    transition: width 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Removed height from transition */
+}
+
+#terminal-input {
+    width: calc(100% - 2px); /* Input takes full width minus the border */
+    margin-top: 5px; /* Spacing between terminal and input */
+    padding: 10px; /* Padding inside the input */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    border: 1px solid green;
+}
+
+
+/* ...existing styles... */
+
+
+/* Bottom-left terminal styles */
+.bottom-left-terminal #terminal {
+    width: calc(100% - 40px); /* full width minus margin */
+    /* Height is now constant, so we don't change it here */
+}
+
+.bottom-left-terminal #terminal-input {
+    width: calc(100% - 40px); /* full width minus margin */
+    margin-top: 5px;
+}
+
+/* Underneath input terminal styles */
+.underneath-input #terminal {
+    width: 600px; /* fixed width */
+    /* Height is now constant, so we don't change it here */
+}
+
+.underneath-input #terminal-input {
+    width: 590px; /* slightly less than terminal width to fit nicely */
+    display: block;
+    margin-top: 5px; /* space between terminal and input */
+}
+
+
+/* Adjust the container for the underneath input style */
+.underneath-input #terminal-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* Color themes */
+.white-text,
+.white-text input,
+.white-text button,
+.white-text #terminal {
+    color: white;
+    border-color: white;
+}
+
+.white-text input::placeholder {
+    color: white;
+    opacity: 0.7; /* Adjust opacity for better visibility */
+}
+
+.vibrant-purple-text,
+.vibrant-purple-text input,
+.vibrant-purple-text button,
+.vibrant-purple-text #terminal {
+    color: #a020f0; /* Example of a vibrant purple */
+    border-color: #a020f0;
+}
+
+.vibrant-purple-text input::placeholder {
+    color: #a020f0;
+    opacity: 0.7; /* Adjust opacity for better visibility */
+}
+
+.vibrant-green-text,
+.vibrant-green-text input,
+.vibrant-green-text button,
+.vibrant-green-text #terminal {
+    color: green; /* Example of a vibrant green */
+    border-color: green;
+}
+
+.vibrant-green-text input::placeholder {
+    color: green;
+    opacity: 0.7; /* Adjust opacity for better visibility */
+}
+
+/* Update the color theme styles to include the input box */
+.white-text #terminal-input,
+.vibrant-purple-text #terminal-input,
+.vibrant-green-text #terminal-input {
+    color: currentColor; /* Use the current color for text */
+    border-color: currentColor; /* Use the current color for border */
+}
+
+.white-text #terminal-input::placeholder,
+.vibrant-purple-text #terminal-input::placeholder,
+.vibrant-green-text #terminal-input::placeholder {
+    color: currentColor; /* Use the current color for placeholder text */
+    opacity: 0.7; /* Adjust opacity for better visibility */
+}
