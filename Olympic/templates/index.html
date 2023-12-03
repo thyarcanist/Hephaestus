@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game Screen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic</title>
+    <link rel="stylesheet" href="../css/olympic.css">
 </head>
 <body>
-    <h1>Welcome to the Game!</h1>
+<div id="terminal-container" class="bottom-left-terminal">
+    <textarea id="terminal" readonly></textarea>
+    <input type="text" id="terminal-input" placeholder="Enter command:">
+    <button id="color-white-button">W</button>
+    <button id="color-purple-button">P</button>
+    <button id="color-green-button">G</button>
+    <button id="toggle-button">Toggle Terminal Width</button>
+</div>
+<script src="../js/script.js"></script>
 </body>
 </html>

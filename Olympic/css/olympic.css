@@ -1,0 +1,44 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: green;
+}
+
+#terminal-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
+}
+
+#terminal {
+    width: 600px;
+    height: 300px;
+    background-color: black;
+    border: none;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+    resize: none;
+}
+
+#terminal-input {
+    width: calc(100% - 2px);
+    margin-top: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid green;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    background: none;
+    border: 1px solid green;
+    color: green;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Add additional styles as needed */
