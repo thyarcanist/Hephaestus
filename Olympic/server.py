@@ -9,7 +9,7 @@ def open_browser():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('/templates/template.html')
 
 if __name__ == '__main__':
     threading.Timer(1.25, open_browser).start()  # Wait for server to start before opening browser
