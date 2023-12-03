@@ -20,7 +20,7 @@ document.getElementById('terminal-input').addEventListener('keydown', function(e
 
         // Check for the special command to open a new tab
         if (command === 'start "Olympic.exe"') {
-            window.open('/path-to-game-interface', '_blank'); // Opens a new tab with the game interface
+            window.open('/landing', '_blank'); // Opens a new tab with the game interface
         } else {
             // Send other commands to the server
             fetch('/execute-command', {

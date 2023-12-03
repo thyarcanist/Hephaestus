@@ -1,0 +1,51 @@
+body {
+    background-color: #101010;
+    color: white;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    border: 2px solid white;
+    padding: 20px;
+    background: #eae0c8; /* Marble white */
+    box-shadow: 0 0 10px 0 white;
+}
+.header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+.login-area {
+    padding: 20px 0;
+}
+.input-group {
+    margin-bottom: 10px;
+}
+.input-group label,
+.input-group input {
+    color: #dcdcdc; /* Soft gray for text */
+    display: block;
+    width: 100%;
+    padding: 5px;
+}
+.input-group input {
+    background: #f0e6dc; /* Light marble for input background */
+    border: 1px solid #c0c0c0; /* Silver for input border */
+    color: black;
+}
+.send-btn {
+    color: black; /* For the button text */
+    background: #f5f5dc; /* Cream color for the button */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.send-btn:hover {
+    background: #ede8d0; /* slightly darker cream */
+}
