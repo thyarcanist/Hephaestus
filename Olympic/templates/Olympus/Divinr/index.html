@@ -8,31 +8,63 @@
     <script src="../../../static/js/divinr.js" defer></script>
 </head>
 <body>
-<nav>
-    <div class="logo">Divinr</div>
-    <div class="profile-icon">Profile</div>
-</nav>
-<main>
-    <section class="feed">
-        <!-- Post by Hermes -->
-        <article class="post">
-            <header class="post-header">
-                <img class="avatar" src="path/to/hermes-avatar.png" alt="Hermes">
-                <h2>Hermes</h2>
-                <button class="follow-btn">Follow</button>
-            </header>
-            <img class="post-image" src="path/to/hermes-post.png" alt="Hermes Update">
-            <div class="post-content">
-                <p>Just delivered some messages. Who needs fast delivery?</p>
-                <div class="post-actions">
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="player-info">
+            <img src="images/player-placeholder.png" alt="User" class="player-icon">
+            <h3>N1lNull</h3>
+            <p>Location: ???</p>
+            <p>Adorers: 5K</p>
+            <!-- Player stats and info -->
+            <p>Status: Where you guys comin' from?</p>
+        </div>
+    </aside>
+
+    <section class="main-content">
+        <header class="app-header">
+            <div class="divinr-logo">Divinr</div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#forums">Forums</a></li>
+                    <li><a href="#rankings">Rankings</a></li>
+                    <!-- Other navigation links -->
+                </ul>
+            </nav>
+        </header>
+
+        <main class="feed">
+            <!-- Post Template for Hermes -->
+            <article class="post">
+                <header class="post-header">
+                    <img src="images/god-placeholder.png" alt="Hermes" class="god-icon">
+                    <h2>Hermes</h2>
+                    <p>Just delivered a message to Zeus. #SwiftAsTheWind</p>
+                </header>
+                <img src="images/post-image-1.png" alt="Hermes Post Content" class="post-image">
+                <footer class="post-footer">
                     <button class="like-btn">Like</button>
-                    <button class="comment-btn">Comment</button>
-                    <button class="share-btn">Share</button>
-                </div>
-            </div>
-        </article>
-        <!-- More posts here -->
+                    <button class="love-btn">Love</button>
+                    <button class="praise-btn">Praise</button>
+                    <span class="post-stats">1.2k Likes, 80k Loves, 150k Praises</span>
+                </footer>
+            </article>
+            <article class="post">
+                <header class="post-header">
+                    <img src="images/god-placeholder.png" alt="Apollo" class="god-icon">
+                    <h2>Apollo</h2>
+                    <p>Someone changed my lyre to drop-d tuning!</p>
+                </header>
+                <img src="images/post-image-1.png" alt="Apollo Post Content" class="post-image">
+                <footer class="post-footer">
+                    <button class="like-btn">Like</button>
+                    <button class="love-btn">Love</button>
+                    <button class="praise-btn">Praise</button>
+                    <span class="post-stats">5.2k Likes, 641k Loves, 372k Praises</span>
+                </footer>
+            </article>
+            <!-- Repeat for other posts -->
+        </main>
     </section>
-</main>
+</div>
 </body>
 </html>

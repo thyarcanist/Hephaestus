@@ -1,48 +1,89 @@
-body {
+body, html {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-nav {
-    background-color: #fff;
-    border-bottom: 1px solid #dbdbdb;
+.app-container {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
+    max-width: 1000px; /* Adjusted for a wider layout */
+    margin: auto;
+    height: 100vh; /* Full height */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    font-size: 24px;
+.sidebar {
+    width: 20%; /* Sidebar takes 20% of the container width */
+    background-color: #eae0c8; /* Marble background */
+    padding: 20px;
+    box-shadow: 2px 0px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between profile and footer */
+}
+
+.player-info {
+    text-align: center;
+}
+
+.player-icon {
+    width: 80px; /* Adjusted for a more compact look */
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.main-content {
+    width: 60%; /* Main content takes 60% of the container width */
+    overflow-y: auto; /* Enables scrolling if content is too long */
+}
+
+.app-header, .site-nav {
+    background-color: #eae0c8; /* Marble background for consistency */
+    padding: 10px 20px; /* More padding for better spacing */
+    display: flex;
+    justify-content: space-between; /* Space between logo and nav */
+    align-items: center;
+    position: sticky; /* Header sticks to the top when scrolling */
+    top: 0;
+}
+
+.site-nav ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.site-nav li {
+    margin-right: 20px;
+}
+
+.site-nav a {
+    color: #8d6e63; /* Earthy tone for links */
+    text-decoration: none;
     font-weight: bold;
 }
 
-.profile-icon {
-    /* Placeholder for profile icon styles */
-}
-
 .feed {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
 }
 
 .post {
-    background-color: #fff;
-    border: 1px solid #dbdbdb;
-    margin-top: 20px;
-    width: 500px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .post-header {
+    padding: 10px;
+    background-color: #f5f5dc; /* Cream header */
     display: flex;
     align-items: center;
-    padding: 10px;
-}
-
-.avatar {
-    border-radius: 50%;
-    margin-right: 10px;
+    justify-content: space-between; /* Space between text and buttons */
 }
 
 .post-image {
@@ -50,21 +91,39 @@ nav {
     display: block;
 }
 
-.post-content {
+.post-footer {
     padding: 10px;
+    background-color: #f5f5dc; /* Cream footer */
+    display: flex;
+    justify-content: space-between;
 }
 
-.follow-btn, .like-btn, .comment-btn, .share-btn {
-    background-color: #0095f6;
-    color: #fff;
+.follow-btn, .like-btn, .love-btn, .praise-btn {
+    background: none;
     border: none;
     padding: 5px 10px;
-    margin-right: 10px;
     cursor: pointer;
+    font-weight: bold;
+    color: #8d6e63; /* Earthy tone for buttons */
 }
 
-.post-actions {
+.post-stats {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Additional styles */
+.right-side {
+    width: 20%; /* Right-side content takes 20% of the container width */
+    background-color: #eae0c8; /* Marble background */
+    padding: 20px;
+    box-shadow: -2px 0px 5px rgba(0,0,0,0.1);
     display: flex;
-    align-items: center;
-    padding: 10px;
+    flex-direction: column;
+    justify-content: start;
+}
+
+/* Ensure the footer is always at the bottom */
+.sidebar-footer {
+    margin-top: auto;
 }

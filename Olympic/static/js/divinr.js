@@ -8,3 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Add event listeners for like, love, and praise buttons
+    const likeButtons = document.querySelectorAll('.like-btn');
+    likeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Implement like functionality or increment count
+            alert('Liked!');
+        });
+    });
+
+    // Repeat for love and praise buttons
+});
+
