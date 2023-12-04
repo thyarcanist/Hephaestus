@@ -29,6 +29,7 @@ Contributions to the ARG are welcome! If you have ideas for improvements or new 
 
 ## References
 
+Powered by Anarchy.AI
 
 Anderson, Datorien. (Nov 2023). "Machine Learning-AI NPC Agents in a Digitally Immersive Environment". Occybyte.
 https://occybyte.substack.com/p/machine-learning-ai-npc-agents.
