@@ -4,6 +4,8 @@
 
 // Function to generate initial game state
 void generateInitialState() {
+    // Load the model and start generating
+    // Will need to start another py to do that. will need to use a small model size
     // Call AI service or perform some generation logic
     // Save the state to a file or database
 }
