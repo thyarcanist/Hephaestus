@@ -2,59 +2,61 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f2f2f2;
     color: #333;
 }
 
 .app-container {
-    display: flex;
-    max-width: 1000px; /* Adjusted for a wider layout */
-    margin: auto;
-    height: 100vh; /* Full height */
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; /* Three-column layout */
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar {
-    width: 20%; /* Sidebar takes 20% of the container width */
-    background-color: #eae0c8; /* Marble background */
+.sidebar, .right-side {
+    background-color: #eae0c8;
     padding: 20px;
     box-shadow: 2px 0px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Space between profile and footer */
+    overflow-y: auto;
 }
 
-.player-info {
+.player-info, .forums, .rankings {
     text-align: center;
+    margin-bottom: 30px;
 }
 
-.player-icon {
-    width: 80px; /* Adjusted for a more compact look */
-    height: 80px;
+.player-icon, .god-icon {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    display: block;
+    margin: 10px auto;
 }
 
 .main-content {
-    width: 60%; /* Main content takes 60% of the container width */
-    overflow-y: auto; /* Enables scrolling if content is too long */
+    background-color: #fff;
+    padding: 20px;
+    overflow-y: auto;
 }
 
-.app-header, .site-nav {
-    background-color: #eae0c8; /* Marble background for consistency */
-    padding: 10px 20px; /* More padding for better spacing */
+.app-header {
+    background-color: #eae0c8;
+    padding: 10px;
     display: flex;
-    justify-content: space-between; /* Space between logo and nav */
+    justify-content: space-between;
     align-items: center;
-    position: sticky; /* Header sticks to the top when scrolling */
+    position: sticky;
     top: 0;
+    z-index: 10;
 }
 
 .site-nav ul {
     list-style-type: none;
-    display: flex;
     padding: 0;
     margin: 0;
+    display: flex;
 }
 
 .site-nav li {
@@ -62,68 +64,129 @@ body, html {
 }
 
 .site-nav a {
-    color: #8d6e63; /* Earthy tone for links */
+    color: #8d6e63;
     text-decoration: none;
     font-weight: bold;
 }
 
-.feed {
-    padding: 20px;
-}
-
 .post {
     background-color: #ffffff;
+    border-radius: 2px;
     margin-bottom: 20px;
-    border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .post-header {
+    color: #444;
     padding: 10px;
-    background-color: #f5f5dc; /* Cream header */
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space between text and buttons */
+    background-color: #f5f5dc;
+    display: flow-root;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .post-image {
-    width: 100%;
+    width: 50%;
     display: block;
+}
+
+.interaction-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f5f5dc;
+}
+
+.interaction-buttons button {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #8d6e63;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.interaction-buttons button:hover {
+    background-color: #ddd;
 }
 
 .post-footer {
     padding: 10px;
-    background-color: #f5f5dc; /* Cream footer */
+    background-color: #f5f5dc;
     display: flex;
     justify-content: space-between;
 }
 
-.follow-btn, .like-btn, .love-btn, .praise-btn {
-    background: none;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #8d6e63; /* Earthy tone for buttons */
-}
-
-.post-stats {
+.post-footer .post-stats {
     font-size: 0.9em;
     color: #666;
 }
 
-/* Additional styles */
-.right-side {
-    width: 20%; /* Right-side content takes 20% of the container width */
-    background-color: #eae0c8; /* Marble background */
-    padding: 20px;
-    box-shadow: -2px 0px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
+.comments {
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+    padding: 10px;
 }
 
-/* Ensure the footer is always at the bottom */
-.sidebar-footer {
-    margin-top: auto;
+.comments details {
+    padding: 0;
+}
+
+.comments summary {
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+}
+
+.comments ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.comments li {
+    padding: 5px 0;
+}
+
+.comments input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        display: block;
+    }
+
+    .sidebar, .right-side {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 10px;
+        box-shadow: none;
+        order: 1;
+    }
+
+    .main-content {
+        order: 2;
+    }
+
+    .app-header, .site-nav {
+        flex-direction: column;
+    }
+
+    .site-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-nav li {
+        margin-bottom: 10px;
+    }
 }
