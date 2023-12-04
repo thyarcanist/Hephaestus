@@ -4,6 +4,11 @@ import threading
 
 app = Flask(__name__)
 
+@app.route('/reset-state', methods=['POST'])
+def reset_state():
+
+    return 'PIAP has been reset.'
+
 @app.route('/')
 def index():
     return render_template('index.html')

@@ -18,8 +18,24 @@ document.getElementById('terminal-input').addEventListener('keydown', function(e
         var command = this.value;
         this.value = '';
 
+
+        // Check for the reset state command
+        if (command.toLowerCase() === 'reset state') {
+            // Send command to server to reset the state
+            fetch('/reset-state', {
+                method: 'POST',
+                // Additional options like headers, body, etc.
+            })
+                .then(response => response.text())
+                .then((response) => {
+                    var terminal = document.getElementById('terminal');
+                    terminal.value += '\n$ ' + command + '\n' + response;
+                    terminal.scrollTop = terminal.scrollHeight;
+                })
+                .catch(error => console.error('Error:', error));
+        }
         // Check for the special command to open a new tab
-        if (command === 'start "Olympic.exe"') {
+        else if (command === 'start "Olympic.exe"') {
             window.open('/landing', '_blank'); // Opens a new tab with the game interface
         } else {
             // Send other commands to the server
