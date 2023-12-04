@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import webbrowser
 import threading
 
@@ -12,6 +12,14 @@ def index():
 def landing():
     return render_template('landing.html')
 
+@app.route('/divinr')
+def divinr():
+    return render_template('Olympus/Divinr/index.html')
+
+
+@app.route('/go-to-youtube')
+def go_to_youtube():
+    return redirect('https://www.youtube.com/watch?v=MSb_31SUEXE')
 
 def open_browser():
     webbrowser.open('http://127.0.0.1:5000/')

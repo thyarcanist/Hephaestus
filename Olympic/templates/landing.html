@@ -17,12 +17,17 @@
         container.style.transition = 'transform 0.5s ease-in-out';
         setTimeout(function() {
           container.style.display = 'none';
+          // Redirect to Divinr after 5 seconds
+          setTimeout(function() {
+            window.location.href = '/divinr'; // Redirects to the Divinr route
+          }, 5000); // 5-second delay
         }, 500); // Wait for the transition to finish
       } else {
         alert('Incorrect login details.');
       }
     }
   </script>
+
 </head>
 <body>
 <div class="container">
