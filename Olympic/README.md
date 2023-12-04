@@ -25,3 +25,10 @@ tbc, will want to all make a pip thing for this? but will make it more thematic 
 ## Contributing
 
 Contributions to the ARG are welcome! If you have ideas for improvements or new features, feel free to fork the repository, create a feature branch, and submit a pull request.
+
+
+## References
+
+
+Anderson, Datorien. (Nov 2023). "Machine Learning-AI NPC Agents in a Digitally Immersive Environment". Occybyte.
+https://occybyte.substack.com/p/machine-learning-ai-npc-agents.
