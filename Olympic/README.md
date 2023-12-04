@@ -18,6 +18,10 @@ Users will be able to:
 ## Setup
 *To set up the ARG environment on your local machine, follow the steps below:*
 
-1. Clone the repository:
-   ```sh
-   git clone <repository-url>
+tbc, will want to all make a pip thing for this? but will make it more thematic in name than Olympic.
+
+
+
+## Contributing
+
+Contributions to the ARG are welcome! If you have ideas for improvements or new features, feel free to fork the repository, create a feature branch, and submit a pull request.
