@@ -4,7 +4,7 @@ document.getElementById('login-button').addEventListener('click', function() {
     
     // Here you would validate the username and password.
     // For now, we just simulate successful login.
-    if (username === 'admin' && password === 'password') { // replace with actual validation
+    if (username === 'admin' && password === 'RiddleThisR1dd13Th4T') { // replace with actual validation
         document.getElementById('login-container').classList.add('hidden');
         document.getElementById('terminal-container').classList.remove('hidden');
         document.getElementById('terminal-input').focus();
