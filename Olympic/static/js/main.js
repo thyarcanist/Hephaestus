@@ -18,9 +18,25 @@ document.getElementById('terminal-input').addEventListener('keydown', function(e
         var command = this.value;
         this.value = '';
 
+        // Send the command to the C++ backend
+        fetch('http://localhost:5000/command', {
+            method: 'POST',
+            body: command,
+            headers: {
+                'Content-Type': 'text/plain'
+            }
+        })
+            .then(response => response.text())
+            .then((response) => {
+                var terminal = document.getElementById('terminal');
+                terminal.value += '\n' + response;
+                terminal.scrollTop = terminal.scrollHeight;
+            })
+            .catch(error => console.error('Error:', error));
+
         // Display the entered text in the terminal
         var terminal = document.getElementById('terminal');
-        terminal.value += '\n$ ' + command;
+        terminal.value += '\n> ' + command;
         terminal.scrollTop = terminal.scrollHeight;
 
         // Check for the reset state command

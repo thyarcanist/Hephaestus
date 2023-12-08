@@ -1,8 +1,15 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 import webbrowser
 import threading
 
 app = Flask(__name__)
+
+@app.route('/command', methods=['POST'])
+def handle_command():
+    command = request.data.decode('utf-8')  # Get the command from the request body
+    print(f"Received command: {command}")  # Log the command
+    # Process the command...
+    return f"Command received: {command}"
 
 @app.route('/reset-state', methods=['POST'])
 def reset_state():

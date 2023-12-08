@@ -4,8 +4,24 @@
 #include <string>
 #include <filesystem>
 #include <random>
+#include "httplib.h"
+#include <thread>
 
 namespace fs = std::filesystem;
+
+void startServer() {
+    httplib::Server svr;
+
+    svr.Post("/command", [](const httplib::Request& req, httplib::Response& res) {
+        std::string command = req.body;
+        std::cout << "Received command: " << command << std::endl;  // Log the command
+        // Process the command...
+        res.set_content("Command received: " + command, "text/plain");
+    });
+
+    svr.listen("localhost", 5000);
+}
+
 
 // Function to verify the integrity of all project files
 bool verifyIntegrity() {
@@ -47,6 +63,7 @@ int main() {
         return 1;
     }
 
+
     // Generate and serialize username and password
     auto [username, password] = generateCredentials();
     // Save credentials to a file or database
@@ -59,6 +76,10 @@ int main() {
     std::system("C:venv/Scripts/python.exe C:server.py");
 
     // Rest of your C++ code...
+
+    // Start HTTP server in a separate thread
+    std::thread serverThread(startServer);
+    serverThread.join();
 
     return 0;
 }
