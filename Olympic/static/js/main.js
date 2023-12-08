@@ -18,6 +18,10 @@ document.getElementById('terminal-input').addEventListener('keydown', function(e
         var command = this.value;
         this.value = '';
 
+        // Display the entered text in the terminal
+        var terminal = document.getElementById('terminal');
+        terminal.value += '\n$ ' + command;
+        terminal.scrollTop = terminal.scrollHeight;
 
         // Check for the reset state command
         if (command.toLowerCase() === 'reset state') {
@@ -28,8 +32,7 @@ document.getElementById('terminal-input').addEventListener('keydown', function(e
             })
                 .then(response => response.text())
                 .then((response) => {
-                    var terminal = document.getElementById('terminal');
-                    terminal.value += '\n$ ' + command + '\n' + response;
+                    terminal.value += '\n' + response;
                     terminal.scrollTop = terminal.scrollHeight;
                 })
                 .catch(error => console.error('Error:', error));
@@ -37,25 +40,12 @@ document.getElementById('terminal-input').addEventListener('keydown', function(e
         // Check for the special command to open a new tab
         else if (command === 'start "Olympic.exe"') {
             window.open('/landing', '_blank'); // Opens a new tab with the game interface
-        } else {
-            // Send other commands to the server
-            fetch('/execute-command', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({command: command})
-            })
-            .then(response => response.text())
-            .then((response) => {
-                var terminal = document.getElementById('terminal');
-                terminal.value += '\n$ ' + command + '\n' + response;
-                terminal.scrollTop = terminal.scrollHeight;
-            })
-            .catch(error => console.error('Error:', error));
         }
+        // All other inputs are displayed as they are without any error or special handling
     }
 });
 
-// ...existing JavaScript...
+
 
 // Function to toggle terminal position
 function toggleTerminalPosition() {
