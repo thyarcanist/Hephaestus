@@ -6,22 +6,42 @@
 #include <random>
 #include "httplib.h"
 #include <thread>
+#include <array>
 
 namespace fs = std::filesystem;
+
+std::string executePythonScript(const std::string& scriptPath) {
+    std::string command = "python " + scriptPath;
+    std::array<char, 128> buffer;
+    std::string result;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(command.c_str(), "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        result += buffer.data();
+    }
+    return result;
+}
 
 void startServer() {
     httplib::Server svr;
 
     svr.Post("/command", [](const httplib::Request& req, httplib::Response& res) {
         std::string command = req.body;
-        std::cout << "Received command: " << command << std::endl;  // Log the command
-        // Process the command...
-        res.set_content("Command received: " + command, "text/plain");
+        std::cout << "Received command: " << command << std::endl;
+        std::string output;
+
+        if (command == "wake up Vos") {
+            output = executePythonScript("ActivateAnarchy.py");
+        } else {
+            output = "Command received: " + command;
+        }
+        res.set_content(output, "text/plain");
     });
 
     svr.listen("localhost", 5000);
 }
-
 
 // Function to verify the integrity of all project files
 bool verifyIntegrity() {
@@ -62,6 +82,7 @@ int main() {
         std::cout << "File verification failed." << std::endl;
         return 1;
     }
+
 
 
     // Generate and serialize username and password
